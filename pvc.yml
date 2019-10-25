@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: pvc-azdisk
+spec:
+  accessModes: 
+    - ReadWriteOnce
+  storageClassName: sc-azdisk
+  resources:
+    requests:
+      storage: 30Gi
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-azdisk
+provisioner: kubernetes.io/azure-disk
+parameters:
+  storageaccounttype: Standard_LRS
+  kind: Shared

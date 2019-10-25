@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: game-of-life
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: game-of-life
+  template:
+    metadata:
+      labels:
+        app: game-of-life
+    spec:
+      volumes:
+        - name:  pv-gol
+          persistentVolumeClaim:
+            claimName:  pvc-azdisk
+      containers:
+      - name: game-of-life
+        image: srinivasreddy433/gol:v1
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "256m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: pv-gol
+        mountPath:  /usr/local/tomcat/webapps
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: game-of-life
+spec:
+  selector:
+    app: game-of-life
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: LoadBalancer
