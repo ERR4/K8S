@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata: 
+  name: game-of-life
+spec:
+  minReplicas: 2
+  maxReplicas: 5
+  scaleTargetRef:
+    kind: Deployment
+    name: game-of-life
+    apiVersion: apps/v1
+  targetCPUUtilizationPercentage: 50
