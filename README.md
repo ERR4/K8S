@@ -1,2 +1,2 @@
-# K8S_Assessment
+# K8S_POC
 Game of Life deployment to AKS cluster
