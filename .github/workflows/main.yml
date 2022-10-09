@@ -24,3 +24,8 @@ jobs:
           echo "${{ steps.abc.outputs.modified }}"
           echo "Added+Modified:"
           echo "${{ steps.abc.outputs.added_modified }}"
+          
+      - name: KUBECTL apply
+        run: |
+          if [ "${file: -4}" == ".yml" ] || if [ "${file: -5}" == ".yaml" ]; then echo "Yes! "kubectl apply -f "${{ steps.abc.outputs.added }}"; 
+          else echo "no!";fi
