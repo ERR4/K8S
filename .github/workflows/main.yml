@@ -28,10 +28,10 @@ jobs:
           echo "${{ steps.abc.outputs.added_modified }}"
           
       - name: KUBECTL apply
-        shell: bash
         run: |
           chmod +x script.sh
           ./script.sh
+        shell: bash
   #      run: |
   #        echo "All"
   #        echo "${{ steps.abc.outputs }}"
