@@ -30,5 +30,5 @@ jobs:
       - name: KUBECTL apply
         run: |
           chmod +x script.sh
-          ./script.sh
+          bash script.sh
         shell: bash
