@@ -1,5 +1,6 @@
 #!/bin/bash
-if [ "${steps.abc.outputs.added: -4}" == ".yml" ] || if [ "${steps.abc.outputs.added: -5}" == ".yaml" ]
+file=$1
+if [ "${file: -4}" == ".yml" ] || if [ "${file: -5}" == ".yaml" ]
 then 
 	echo "Yes! 
 	"kubectl apply -f "${{ steps.abc.outputs.added }}"
