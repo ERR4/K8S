@@ -1,9 +1,9 @@
-name: Test
+name: CD
 
 on: push
 
 jobs:
-  test:
+  cd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.1.0
@@ -32,7 +32,3 @@ jobs:
           chmod +x script.sh
           ./script.sh
         shell: bash
-  #      run: |
-  #        echo "All"
-  #        echo "${{ steps.abc.outputs }}"
-  #      if: ${{ endswith(${{steps.abc.outputs.added}}, 'yml') }}
