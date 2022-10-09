@@ -31,4 +31,4 @@ jobs:
         run: |
           echo "All"
           echo "${{ steps.abc.outputs }}"
-        if: ${{ endswith("${{ steps.abc.outputs.added }}", 'yml') }} 
+        if: ${{ endswith(${{ steps.abc.outputs.added }}, 'yml') }}
