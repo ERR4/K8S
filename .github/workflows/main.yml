@@ -13,6 +13,8 @@ jobs:
       - name: Printing
         run: |
           echo "All:"
+          echo "${{ steps.abc.outputs }}"
+          echo "All:"
           echo "${{ steps.abc.outputs.all }}"
           echo "Added:"
           echo "${{ steps.abc.outputs.added }}"
@@ -27,4 +29,6 @@ jobs:
           
       - name: KUBECTL apply
         run: |
-          if [ "${steps.abc.outputs.added: -4}" == ".yml" ] || if [ "${steps.abc.outputs.added: -5}" == ".yaml" ]; then echo "Yes! "kubectl apply -f "${{ steps.abc.outputs.added }}"; else echo "no!";fi
+          echo "All"
+          echo "${{ steps.abc.outputs }}"
+        if: ${{ endswith("${{ steps.abc.outputs.added }}", 'yml') }} 
